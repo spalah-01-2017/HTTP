@@ -17,12 +17,12 @@ function Check () {
 	req.open('GET', 'https://raw.githubusercontent.com/danielmiessler/SecLists/master/Passwords/10k_most_common.txt');
 	req.addEventListener('load', function (e) {
 		let passwords = req.responseText.split('\r\n');
-		let password = document.querySelector('.input').value;
+		let password = input.value;
 		let safe = `Password "${password}" is safe!`;
 		let unsafe = `Password "${password}" is not safe!`;
-		let msg = passwords.indexOf(password) === -1 ? safe : unsafe;		
-		alert = new Message(msg);
+		let msg = passwords.indexOf(password) === -1 ? safe : unsafe;
 
+		alert = new Message(msg);
 		input.value = '';
 		btn.removeAttribute("disabled");
 		load.style.display = 'none';
