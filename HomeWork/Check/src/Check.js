@@ -1,6 +1,6 @@
 let btn = document.querySelector('.submit');
 let load = document.querySelector('.load');
-let input = document.querySelector('.input').value;
+let input = document.querySelector('.input');
 
 function btnCallback (e) {
 	e.preventDefault();
@@ -21,7 +21,7 @@ function Check () {
 		let msg = passwords.indexOf(password) === -1 ? safe : unsafe;		
 		let alert = new Message(msg);
 
-		input = '';
+		input.value = '';
 		btn.removeAttribute("disabled");
 		load.style.display = 'none';
 
