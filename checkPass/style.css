@@ -1,0 +1,15 @@
+.indikator {
+  width: 230px;
+  height: 4px;
+  position: relative;
+  background-color: #cccccc;
+  margin-bottom: 10px; }
+  .indikator .inner {
+    height: 100%;
+    position: absolute;
+    background-color: green; }
+
+.loadingText {
+  display: none; }
+
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,17 @@
+.form-group {}
+.indikator {
+  width: 230px;
+  height: 4px;
+  position: relative;
+  background-color: #cccccc;
+  margin-bottom: 10px;
+  .inner {
+    height: 100%;
+    position: absolute;
+    background-color: green;
+  }
+}
+
+.loadingText {
+  display: none;
+}
