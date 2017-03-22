@@ -21,6 +21,11 @@ function Check () {
 		document.querySelector('.input').value = '';
 		btn.removeAttribute("disabled");
 		load.style.display = 'none';
+		console.log(alert.content.style.backgroundColor);
+		if (msg === safe) {
+			alert.content.style.backgroundColor = 'rgba(0, 255, 0, 0.8)';
+		};
+
 		alert.render();
 	})
 	req.send();

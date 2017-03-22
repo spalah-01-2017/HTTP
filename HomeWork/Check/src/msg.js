@@ -6,9 +6,7 @@ class Message {
 		this.messagePar = document.createElement('p');
 		this.close.textContent = '✖';
 		this.messagePar.textContent = message;
-	}
 
-	render () {
 		this.content.style.cssText = "background-color: rgba(255, 0, 0, 0.8); \
 		position: fixed; \
 		z-index: 9999; \
@@ -29,7 +27,9 @@ class Message {
 		text-align: center; \
 		font-size: 60px; \
 		margin: 0px; \ ";
+	}
 
+	render () {
 		this.content.appendChild(this.close);
 		this.content.appendChild(this.messagePar);
 		
