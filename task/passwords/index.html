@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<form>
+		<input type="text">
+		<button type="submit">Check</button>
+		<span style="display: none;">Loading
+			<span class="dot-1">.</span><span class="dot-2">.</span><span class="dot-3">.</span>
+		</span>
+	</form>
+	<style>
+		@keyframes dots {
+			0% {
+				opacity: 0;
+			}
+			100% {
+				opacity: 1;
+			}
+		}
+		.dot-1 {
+			-webkit-animation-name: dots;
+			-moz-animation-name: dots;
+			-o-animation-name: dots;
+			animation-name: dots;
+			-webkit-animation-iteration-count: infinite;
+			-o-animation-iteration-count: infinite;
+			animation-iteration-count: infinite;
+			/* Задержка перед началом */
+			-webkit-animation-delay: .1s;
+			-moz-animation-delay: .1s;
+			-o-animation-delay: .1s;
+			animation-delay: .1s;
+			/* Продолжительность анимации */
+			-webkit-animation-duration: 3s;
+			-moz-animation-duration: 3s;
+			-o-animation-duration: 3s;
+			animation-duration: 3s;
+		}
+		.dot-2 {
+			-webkit-animation-name: dots;
+			-moz-animation-name: dots;
+			-o-animation-name: dots;
+			animation-name: dots;
+			-webkit-animation-iteration-count: infinite;
+			-o-animation-iteration-count: infinite;
+			animation-iteration-count: infinite;
+			/* Задержка перед началом */
+			-webkit-animation-delay: .5s;
+			-moz-animation-delay: .5s;
+			-o-animation-delay: .5s;
+			animation-delay: .5s;
+			/* Продолжительность анимации */
+			-webkit-animation-duration: 3s;
+			-moz-animation-duration: 3s;
+			-o-animation-duration: 3s;
+			animation-duration: 3s;
+		}
+		.dot-3 {
+			-webkit-animation-name: dots;
+			-moz-animation-name: dots;
+			-o-animation-name: dots;
+			animation-name: dots;
+			-webkit-animation-iteration-count: infinite;
+			-o-animation-iteration-count: infinite;
+			animation-iteration-count: infinite;
+			/* Задержка перед началом */
+			-webkit-animation-delay: 1s;
+			-moz-animation-delay: 1s;
+			-o-animation-delay: 1s;
+			animation-delay: 1s;
+			/* Продолжительность анимации */
+			-webkit-animation-duration: 3s;
+			-moz-animation-duration: 3s;
+			-o-animation-duration: 3s;
+			animation-duration: 3s;
+		}
+	</style>
+	<script>
+		var checkButton = document.querySelector('button'),
+		activeButton = checkButton,
+		input = document.querySelector('input'),
+		div = document.createElement('div'),
+		span	= document.querySelector('span'),
+		intercalaryDiv = document.querySelector('div'),
+		body = document.querySelector('body'),
+		request = new XMLHttpRequest();
+
+		function getPasswords(e) {
+			checkButton.disabled = true;
+			span.setAttribute('style', 'display: inline');
+			e.preventDefault();
+			request.open('GET', 'https://raw.githubusercontent.com/danielmiessler/SecLists/master/Passwords/10k_most_common.txt', false);
+			request.send();
+			body.appendChild(div);
+			if (request.responseText.indexOf(input.value) === -1) {
+				document.querySelector('div').textContent = 'Strong password';
+			} else {
+				document.querySelector('div').textContent = 'Not strong password';
+			}
+			checkButton.disabled = false;
+			span.setAttribute('style', 'display: none');
+		}
+
+		checkButton.addEventListener('click', getPasswords);
+
+	</script>
+</body>
+</html>
