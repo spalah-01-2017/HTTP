@@ -1,11 +1,13 @@
 let btn = document.querySelector('.submit');
 let load = document.querySelector('.load');
 let input = document.querySelector('.input');
+let alert;
 
 function btnCallback (e) {
 	e.preventDefault();
+	if (alert) alert.content.remove();
 	Check();
-	
+
 	btn.setAttribute("disabled", "disabled");
 	load.style.display = 'inline';
 }
@@ -19,7 +21,7 @@ function Check () {
 		let safe = `Password "${password}" is safe!`;
 		let unsafe = `Password "${password}" is not safe!`;
 		let msg = passwords.indexOf(password) === -1 ? safe : unsafe;		
-		let alert = new Message(msg);
+		alert = new Message(msg);
 
 		input.value = '';
 		btn.removeAttribute("disabled");
