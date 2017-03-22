@@ -1,4 +1,3 @@
-
 function List(array) {
 	this.list = array || [];
 	this.renderTo = (node) => {
@@ -15,7 +14,9 @@ function List(array) {
 			return;
 		};
 
-		if (node.firstElementChild.tagName === 'UL') {node.removeChild(node.firstElementChild)};
+		for(var i = 0; i <= node.children.length; i++) {
+			node.removeChild(node.children[i]);
+		}
 
 		node.insertBefore(newUl, node.firstElementChild);
 		this.list.forEach((liText) => {
