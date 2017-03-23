@@ -38,9 +38,6 @@ var list = new List();
 function ChuckNorris(List, nod) {
 	this.jokes = [];
 	this.nod = nod;
-	this.callBack = (data) => {
-		console.log(data);
-	};
 	this._getJokes = function(n, fn) {
 		var req = new XMLHttpRequest();
 		var num = n;
@@ -52,6 +49,7 @@ function ChuckNorris(List, nod) {
 				JSON.parse(req.responseText).value.forEach((obj) => {
 					list.list.push(obj.joke);
 				});
+				fn(req.responseText);
 			});
 		} else {
 			req.open('get', `http://api.icndb.com/jokes/random`);
@@ -59,6 +57,7 @@ function ChuckNorris(List, nod) {
 				list.list = [];
 				this.callBack(JSON.parse(req.responseText).value);
 				list.list.push(JSON.parse(req.responseText).value.joke);
+				fn(req.responseText);
 			});
 		}
 		req.send();
